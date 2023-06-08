@@ -1,21 +1,5 @@
 export const personData = [
   {
-    name: 'Susan Boyle',
-    type: 'person',
-    email: 'someone@gmail.com',
-    phoneNo: '+1 628 291 2098',
-    companyName: 'Alphabet',
-    address: '169 11th Street, 94103 San Francisco'
-  },
-  {
-    name: 'Marc Johnson',
-    type: 'person',
-    email: 'someone@gmail.com',
-    phoneNo: '+1 628 291 2098',
-    companyName: 'Alphabet',
-    address: ' 169 11th Street, 94103 San Francisco ads ad ss'
-  },
-  {
     name: 'PiedPiper',
     type: 'person',
     email: 'someone@gmail.com',
@@ -84,6 +68,22 @@ export const personData = [
         address: '3 - 169 11th Street, 94103 San Francisco'
       },
     ]
+  },
+  {
+    name: 'Susan Boyle',
+    type: 'person',
+    email: 'someone@gmail.com',
+    phoneNo: '+1 628 291 2098',
+    companyName: 'Alphabet',
+    address: '169 11th Street, 94103 San Francisco'
+  },
+  {
+    name: 'Marc Johnson',
+    type: 'person',
+    email: 'someone@gmail.com',
+    phoneNo: '+1 628 291 2098',
+    companyName: 'Alphabet',
+    address: ' 169 11th Street, 94103 San Francisco ads ad ss'
   },
   {
     name: 'PiedPiper',

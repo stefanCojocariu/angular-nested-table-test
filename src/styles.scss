@@ -1,1 +1,19 @@
-/* You can add global styles to this file, and also import other style files */
+@import url("../node_modules/bootstrap/dist/css/bootstrap.min.css");
+@import url("../node_modules/bootstrap-icons/font/bootstrap-icons.min.css");
+
+.resizable {
+    position: relative;
+  }
+  
+  .resizable::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: -5px;
+    bottom: 0;
+    width: 2px;
+    cursor: col-resize;
+    background-color: #ddd;
+    z-index: 9999;
+    display: block; /* Add this line */
+  }

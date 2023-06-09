@@ -1,0 +1,44 @@
+.rotated {
+    transform: rotate(90deg);
+}
+
+.icon  {
+    font-size: 2rem;
+    color: cornflowerblue;
+}
+
+input:hover, .icon:hover {
+    cursor: pointer;
+}
+
+tr {
+    height: 65px;
+}
+
+.selectable, .arrow {
+    cursor: pointer;
+}
+
+.d-flex {
+    gap: 5px;
+}
+
+.multiple-action-container {
+    min-height: 31px;
+}
+
+.action-container {
+    display: none !important;
+}
+  
+tr:hover .action-container {
+    display: flex !important;
+}
+
+td:has(> div.action-container) {
+    min-width: 200px;
+}
+
+.search-input-container {
+    max-width: 200px;
+}

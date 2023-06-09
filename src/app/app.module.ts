@@ -3,18 +3,24 @@ import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { PersonComponent } from './pages/person/person.component';
-import { NestedTableComponent } from './components/nested-table/nested-table.component';
+import {CommonModule} from "@angular/common";
+import { PersonListComponent } from './pages/person-list/person-list.component';
+import { NestedTableComponent } from './components/table/nested-table.component';
+import { FormsModule } from '@angular/forms';
+import { ColumnResizeDirective } from './directives/column-resize.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
-    PersonComponent,
-    NestedTableComponent
+    PersonListComponent,
+    NestedTableComponent,
+    ColumnResizeDirective
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    CommonModule,
+    FormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

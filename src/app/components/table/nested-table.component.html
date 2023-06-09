@@ -1,0 +1,84 @@
+
+<div class="d-flex mb-3 align-items-center justify-content-between">
+  <div class="multiple-action-container">
+    <button type="button" class="btn btn-rounded btn-sm btn-outline-danger" [class.d-none]="!showDeleteMultipleButton">Delete all selected</button>
+  </div>
+  <div class="search-input-container">
+    <input type="text" class="form-control" placeholder="Search by name..." [(ngModel)]="searchText" (input)="onSearchInput()">
+  </div>
+</div>
+<table class="table table-hover align-middle bg-white">
+  <thead>
+    <tr>
+      <th>
+        <input type="checkbox" [(ngModel)]="selectAll" (click)="toggleSelectAll()">
+      </th>
+      <th columnResize>Name</th>
+      <th columnResize>Type</th>
+      <th columnResize>Email</th>
+      <th columnResize>Phone Number</th>
+      <th columnResize>Company Name</th>
+      <th columnResize>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <ng-container *ngFor="let row of filteredRowData">
+      <tr>
+        <td>
+          <input type="checkbox" [(ngModel)]="row.selected" (change)="onRowCheckboxChange(row, true)">
+        </td>
+        <td (click)="toggleRowExpansion(row)" [class.selectable]="row.children?.length">
+          <div class="d-flex align-items-center">
+            <i *ngIf="row.children?.length" class="icon bi bi-arrow-right-short" [class.rotated]="row.expanded"></i>
+            <div>{{ row.name }}</div>
+          </div>
+        </td>
+        <td><span>{{ row.type }}</span></td>
+        <td><div>{{ row.email }}</div></td>
+        <td><div>{{ row.phoneNo }}</div></td>
+        <td><div>{{ row.companyName }}</div></td>
+        <td>
+          <div class="action-container">
+            <div class="d-flex" [class.d-none]="showDeleteMultipleButton">
+              <button type="button" class="btn btn-rounded btn-sm btn-outline-primary">Edit</button>
+              <button type="button" class="btn btn-rounded btn-sm btn-outline-danger">Delete</button>
+            </div>
+          </div>
+        </td>
+      </tr>
+      <ng-container *ngIf="row.expanded && row.children && row.children.length > 0">
+        <ng-container *ngTemplateOutlet="recursiveRowTemplate; context: { rows: row.children, indentationLevel: 1 }"></ng-container>
+      </ng-container>
+    </ng-container>
+  </tbody>
+</table>
+
+<ng-template #recursiveRowTemplate let-rows="rows" let-indentationLevel="indentationLevel">
+  <ng-container *ngFor="let childRow of rows">
+    <tr>
+      <td>
+        <input type="checkbox" [(ngModel)]="childRow.selected" (change)="onRowCheckboxChange(childRow)">
+      </td>
+      <td (click)="toggleRowExpansion(childRow)" [class.selectable]="childRow.children?.length">
+        <div [ngStyle]="{'padding-left.px': indentationLevel * 28}" class="d-flex align-items-center">
+          <i *ngIf="childRow.children?.length" class="icon bi bi-arrow-right-short" [class.rotated]="childRow.expanded"></i>
+          <div>{{ childRow.name }}</div>
+        </div>
+      </td>
+      <td><span>{{ childRow.type }}</span></td>
+      <td><div>{{ childRow.email }}</div></td>
+      <td><div>{{ childRow.phoneNo }}</div></td>
+      <td><div>{{ childRow.companyName }}</div></td>
+      <td>
+        <div class="action-container">
+          <div class="d-flex" [class.d-none]="showDeleteMultipleButton">
+            <button type="button" class="btn btn-rounded btn-sm btn-outline-danger">Delete</button>
+          </div>
+        </div>
+      </td>
+    </tr>
+    <ng-container *ngIf="childRow.expanded && childRow.children && childRow.children.length > 0">
+      <ng-container *ngTemplateOutlet="recursiveRowTemplate; context: { rows: childRow.children, indentationLevel: indentationLevel + 1 }"></ng-container>
+    </ng-container>
+  </ng-container>
+</ng-template>

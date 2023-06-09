@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import {PersonRepository} from "../../repositories/person.repository";
-import {IPerson} from "../../models/person/person";
+import {IPerson} from "../../models/person/person.model";
 
 @Injectable({
   providedIn: 'root'

@@ -6,4 +6,6 @@ export interface IPerson {
   companyName: string;
   address: string;
   children?: IPerson[];
+  expanded?: boolean;
+  selected?: boolean;
 }
